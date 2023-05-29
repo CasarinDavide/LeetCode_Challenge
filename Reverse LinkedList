@@ -1,0 +1,35 @@
+REVERSE A LINKED LIST
+
+*/
+  IDEA: the idea on this algorithm is to change the direction of the pointers.
+*/
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode() : val(0), next(nullptr) {}
+ *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x, ListNode *next) : val(x), next(next) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        
+        ListNode* node = head;
+        ListNode* prec = nullptr;
+        ListNode* tmp = node;
+        
+        while(node != nullptr)
+        {
+            tmp = node;
+            node = node->next;
+            tmp->next = prec;
+            prec = tmp;
+        }
+
+        return prec;
+    }
+};
